@@ -3,18 +3,31 @@ var Product = Backbone.Model.extend({
         "id": "",
         "title": "",
         "description": "",
-        "count": 1
+        "count": 0
+    },
+    initialize: function() {
+        this.on('change:count', this.onChangeCount, this)
     },
     increaseCount: function() {
         this.set('count', this.get('count')+1);
     },
-    putToCart: function() {
-        this.trigger("putToCart", this);
+
+    decreaseCount: function() {
+        this.set('count', this.get('count')-1);
+    },
+
+    onChangeCount: function() {
+        ProductStorage.setItem(this.get('id'), this.get('count'));
     }
+
 });
 var ProductList = Backbone.Collection.extend({
     model: Product,
+    url: 'json/products.json'
+}), ProductCartList = ProductList.extend({
     submit: function() {
-        Backbone.sync('create', this)
+        Backbone.sync('create', this, {
+            url: 'json/success.json'
+        })
     }
 });

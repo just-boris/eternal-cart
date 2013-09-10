@@ -1,16 +1,25 @@
 var AppView = Backbone.View.extend({
 
     initialize: function() {
-        this.render();
-    },
-    render: function() {
-        this.cartView = new CartView();
-        this.shopView = new ShopView();
-        this.shopView.on('putToCart', _.bind(this.putToCart, this))
-    },
+        this.products = new ProductList();
+        this.cartView = new CartView({
+            products: this.products
+        });
+        this.shopView = new ShopView({
+            products: this.products
+        });
+        this.products.fetch({
+            success: function(collection) {
+                collection.each(function(model) {
+                    var count = ProductStorage.getItem(model.id);
+                    if(count) {
+                        model.set('count', parseInt(count, 10));
+                    }
 
-    putToCart: function(productModel) {
-        this.cartView.putProduct(productModel);
+                })
+            }
+        });
+
     }
 });
 $(document).ready(function() {
