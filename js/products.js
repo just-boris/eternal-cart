@@ -24,9 +24,25 @@ var Product = Backbone.Model.extend({
 var ProductList = Backbone.Collection.extend({
     model: Product,
     url: 'json/products.json',
+
+    resetAllCount: function() {
+        this.each(function(model) {model.set('count', 0)});
+    },
+
     submit: function() {
+        var self = this;
+
         Backbone.sync('create', this, {
-            url: 'json/success.json'
+            //раскомментить строчку, чтобы проверить успешную отправку
+//            method: 'GET',
+            url: 'json/success.json',
+            success: function() {
+                self.trigger("submitSuccess");
+                self.resetAllCount();
+            },
+            error: function() {
+                self.trigger("submitFailure")
+            }
         })
     }
 });

@@ -4,7 +4,7 @@
     padding: 10px 0;
 }
 
-.cart {
+.sidebar {
     margin-top: 10px;
     padding-right: 15px;
 }
@@ -13,6 +13,7 @@
     background: #93BEEC;
     padding: 15px;
     border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 .cart-title {

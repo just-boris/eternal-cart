@@ -27,7 +27,7 @@ var CartProductView = Backbone.View.extend({
     }
 });
 var CartView = Backbone.View.extend({
-    el: '.cart',
+    el: '.cart-content',
     events: {
         'click .btn.submit': 'submitCart'
     },

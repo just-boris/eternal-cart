@@ -2,6 +2,9 @@ var AppView = Backbone.View.extend({
 
     initialize: function() {
         this.products = new ProductList();
+        this.messageView = new MessageView({
+            products: this.products
+        });
         this.cartView = new CartView({
             products: this.products
         });
