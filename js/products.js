@@ -23,8 +23,7 @@ var Product = Backbone.Model.extend({
 });
 var ProductList = Backbone.Collection.extend({
     model: Product,
-    url: 'json/products.json'
-}), ProductCartList = ProductList.extend({
+    url: 'json/products.json',
     submit: function() {
         Backbone.sync('create', this, {
             url: 'json/success.json'

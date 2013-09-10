@@ -4,8 +4,35 @@
     padding: 10px 0;
 }
 
-.cart-item {
+.cart {
+    margin-top: 10px;
+    padding-right: 15px;
+}
+
+.cart-content {
+    background: #93BEEC;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.cart-title {
+    margin-top: 0;
+}
+
+.cart-title, .cart-footer, .cart-empty {
+    text-align: center;
+}
+
+.cart-item, .cart-empty {
     border-bottom: 1px dashed #c2c2c2;
     padding-bottom: 5px;
     margin-bottom: 5px;
+}
+
+.cart-item .glyphicon {
+    cursor: pointer;
+}
+
+.cart-item .count {
+    font-weight: bold;
 }

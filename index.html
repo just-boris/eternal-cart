@@ -4,16 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ваша корзина, спасибо Backbone</title>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="lib/html5shiv.js" type="text/javascript"></script>
+        <script src="lib/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-4 cart">
-            <h2 class="cart-title">Вы выбрали</h2>
-            <ul class="products"></ul>
-            <button class="btn btn-primary submit">Заказать!</button>
+            <div class="cart-content">
+                <h2 class="cart-title">Вы выбрали</h2>
+                <ul class="products list-unstyled"></ul>
+                <div class="cart-empty">Корзина пуста</div>
+                <div class="cart-footer">
+                    <button class="btn btn-primary submit">Заказать!</button>
+                </div>
+            </div>
         </div>
         <div class="col-md-8 shop">
             <h2>Наши товары</h2>
@@ -38,8 +47,11 @@
 
 <script type="text/template" id="product-cart-template">
     <%= title %>  <% if(count > 1){ %>(x<%= count %>)<% } %>
-    <div class="pull-right"><span class="glyphicon glyphicon-plus increase" title="Добавить еще"></span>
-    <span class="glyphicon glyphicon-minus decrease" title="Убрать одну"></span> <span class="glyphicon glyphicon-remove remove" title="Убрать все"></span></div>
+    <div class="pull-right controls">
+        <span class="glyphicon glyphicon-plus increase" title="Добавить еще"></span>
+        <span class="glyphicon glyphicon-minus decrease" title="Убрать одну"></span>
+        <span class="glyphicon glyphicon-remove remove" title="Убрать все"></span>
+    </div>
 </script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>

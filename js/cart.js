@@ -35,9 +35,14 @@ var CartView = Backbone.View.extend({
         this.products = this.options.products;
         this.products.on('change:count', this.onProductChange, this);
         this.cartProductsViews = [];
-        this.productsInCart = new ProductCartList();
+        this.$blankLabel = this.$('.cart-empty');
+        this.$submitButton = this.$('.btn.submit');
         this.$list = this.$('.products');
         this.render();
+    },
+
+    render: function() {
+        this.checkBlankCart();
     },
 
     onProductChange: function(productModel) {
@@ -47,6 +52,13 @@ var CartView = Backbone.View.extend({
         if (productModel.previous('count') !== 0 && productModel.get('count') === 0) {
             this.removeProduct(productModel);
         }
+        this.checkBlankCart();
+    },
+
+    checkBlankCart: function() {
+        var emptyCart = _.compact(this.cartProductsViews).length === 0;
+        this.$submitButton.attr('disabled', emptyCart);
+        this.$blankLabel.toggle(emptyCart);
     },
 
     putProduct: function(productModel) {
@@ -55,16 +67,14 @@ var CartView = Backbone.View.extend({
         });
         this.cartProductsViews[productModel.id] = itemView;
         this.$list.append(itemView.el);
-        this.productsInCart.add(productModel);
     },
 
     removeProduct: function(productModel) {
         this.cartProductsViews[productModel.id].remove();
         delete this.cartProductsViews[productModel.id];
-        this.productsInCart.remove(productModel);
     },
 
     submitCart: function() {
-        this.productsInCart.submit();
+        this.products.submit();
     }
 });
