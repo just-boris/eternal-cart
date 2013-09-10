@@ -46,11 +46,14 @@
 </script>
 
 <script type="text/template" id="product-cart-template">
-    <%= title %>  <% if(count > 1){ %>(x<%= count %>)<% } %>
+    <%= title %>
+    <div class="pull-right controls">
+        <span class="glyphicon glyphicon-remove remove" title="Убрать все"></span>
+    </div>
     <div class="pull-right controls">
         <span class="glyphicon glyphicon-plus increase" title="Добавить еще"></span>
+        <span class="badge"><%= count %></span>
         <span class="glyphicon glyphicon-minus decrease" title="Убрать одну"></span>
-        <span class="glyphicon glyphicon-remove remove" title="Убрать все"></span>
     </div>
 </script>
 

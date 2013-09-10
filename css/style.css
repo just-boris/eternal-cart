@@ -29,8 +29,17 @@
     margin-bottom: 5px;
 }
 
+.cart-item .controls {
+    margin-left: 15px;
+}
+
 .cart-item .glyphicon {
     cursor: pointer;
+}
+
+.cart-item .badge {
+    background-color: #428bca;
+    color: #ffffff;
 }
 
 .cart-item .count {
