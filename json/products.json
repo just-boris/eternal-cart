@@ -1,43 +1,43 @@
 [{
     "id": 1,
-    "imgUrl": "http://lorempixel.com/output/animals-h-c-170-180-1.jpg",
+    "imgUrl": "img/kangaroo.jpg",
     "description": "Быстрый, резкий, хорошо, высоко прыгает",
     "title": "Купить кенгуру"
 }, {
     "id": 2,
-    "imgUrl": "http://images.fineartamerica.com/images-small/final-warning-phyllis-howard.jpg",
+    "imgUrl": "img/elephant.jpg",
     "description": "Все говорят, а ты купи слона!",
     "title": "Купить слона"
 }, {
     "id": 3,
-    "imgUrl": "http://lorempixel.com/output/animals-h-c-170-180-9.jpg",
+    "imgUrl": "img/cow.jpg",
     "description": "И у тебя всегда будет молоко!",
     "title": "Купить корову"
 }, {
     "id": 4,
-    "imgUrl": "http://lorempixel.com/output/animals-h-c-170-180-7.jpg",
+    "imgUrl": "img/parrot.jpg",
     "title": "Купить попугаев"
 }, {
     "id": 5,
-    "imgUrl": "http://img.rosrealt.ru/pics/flat/2012/Dec/100_121212_1355325145_0.jpg",
+    "imgUrl": "img/condominium.jpg",
     "description": "Хорошо иметь домик в деревне, а квартиру в городе - еще лучше!",
     "title": "Купить квартиру"
 }, {
     "id": 6,
-    "imgUrl": "http://lorempixel.com/output/technics-h-c-170-180-4.jpg",
+    "imgUrl": "img/capacitor.jpg",
     "description": "Они всем нужны!",
     "title": "Купить конденсаторы"
 }, {
     "id": 7,
-    "imgUrl": "http://lorempixel.com/output/transport-h-c-170-180-6.jpg",
-    "description": "Пожалей метро!",
+    "imgUrl": "img/kamaz.jpg",
+    "description": "Будь мужиком!",
     "title": "Купить машину"
 }, {
     "id": 8,
-    "imgUrl": "http://www.relax72.ru/img/cooking/big/img_09331094114.jpg",
+    "imgUrl": "img/bun.jpg",
     "title": "Купить булочку"
 }, {
     "id": 9,
-    "imgUrl": "http://lorempixel.com/output/animals-h-c-170-180-2.jpg",
+    "imgUrl": "img/tiger.jpg",
     "title": "Купить тигра"
 }]
