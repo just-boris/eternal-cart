@@ -1,10 +1,16 @@
+/**
+ * @name Product
+ * @type {Object}
+ * @description Адаптер для обращения к localStorage для сохранения числа товаров в корзине
+ */
 var ProductStorage =  {
     _prefix: 'product-',
-    getItem: function(id) {
-        return localStorage.getItem(this._prefix+id);
+    getCount: function(id) {
+        var count = localStorage.getItem(this._prefix+id);
+        return count ? parseInt(count, 10) : 0;
     },
 
-    setItem: function(id, count) {
+    setCount: function(id, count) {
         if(count !== 0) {
             localStorage.setItem(this._prefix+id, count);
         }

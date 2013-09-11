@@ -1,3 +1,8 @@
+/**
+ * @name Product
+ * @type {Backbone.Model}
+ * @description Модель отдельного товара в магазине. Поле count - число товара в корзине
+ */
 var Product = Backbone.Model.extend({
     defaults: {
         "id": "",
@@ -6,7 +11,7 @@ var Product = Backbone.Model.extend({
         "count": 0
     },
     initialize: function() {
-        this.on('change:count', this.onChangeCount, this)
+        this.on('change:count', this._onChangeCount, this)
     },
     increaseCount: function() {
         this.set('count', this.get('count')+1);
@@ -16,22 +21,33 @@ var Product = Backbone.Model.extend({
         this.set('count', this.get('count')-1);
     },
 
-    onChangeCount: function() {
-        ProductStorage.setItem(this.get('id'), this.get('count'));
+    _onChangeCount: function() {
+        ProductStorage.setCount(this.get('id'), this.get('count'));
     }
-
 });
+/**
+ * @name ProductList
+ * @type {Backbone.Model}
+ * @description Коллекция, содержащая все товары в магазине. Загружает и отправляет их на сервер
+ */
 var ProductList = Backbone.Collection.extend({
     model: Product,
-    url: 'json/products.json',
 
     resetAllCount: function() {
         this.each(function(model) {model.set('count', 0)});
     },
-
+    load: function() {
+        this.fetch({
+            url: 'json/products.json',
+            success: function(collection) {
+                collection.each(function(model) {
+                    model.set('count', ProductStorage.getCount(model.id));
+                });
+            }
+        });
+    },
     submit: function() {
         var self = this;
-
         Backbone.sync('create', this, {
             //раскомментить строчку, чтобы проверить успешную отправку
 //            method: 'GET',

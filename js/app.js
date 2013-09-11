@@ -1,5 +1,9 @@
+/**
+ * @name AppView
+ * @type {Backbone.View}
+ * @description Основной view приложения. Связывает все дочерние view с коллекцией products
+ */
 var AppView = Backbone.View.extend({
-
     initialize: function() {
         this.products = new ProductList();
         this.messageView = new MessageView({
@@ -11,17 +15,7 @@ var AppView = Backbone.View.extend({
         this.shopView = new ShopView({
             products: this.products
         });
-        this.products.fetch({
-            success: function(collection) {
-                collection.each(function(model) {
-                    var count = ProductStorage.getItem(model.id);
-                    if(count) {
-                        model.set('count', parseInt(count, 10));
-                    }
-
-                })
-            }
-        });
+        this.products.load();
 
     }
 });

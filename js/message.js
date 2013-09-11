@@ -1,3 +1,8 @@
+/**
+ * @name MessageView
+ * @type {Backbone.View}
+ * @description предствление сообщений об ошибках. Слушает коллекцию товаров и сообщает об успехе или провале запроса
+ */
 var MessageView = Backbone.View.extend({
     el: '.message',
     ajaxErrorTemplate: $('#error-message-template').html(),
@@ -8,7 +13,7 @@ var MessageView = Backbone.View.extend({
         this.products.on("submitFailure", this.onErrorSubmit, this);
     },
 
-    showMessage: function(template) {
+    _showMessage: function(template) {
         var message = $(template);
         this.$el.append(message);
         window.setTimeout(function() {
@@ -17,10 +22,10 @@ var MessageView = Backbone.View.extend({
     },
 
     onSuccessSubmit: function() {
-        this.showMessage(this.successSubmitTemplate);
+        this._showMessage(this.successSubmitTemplate);
     },
 
     onErrorSubmit: function() {
-        this.showMessage(this.ajaxErrorTemplate);
+        this._showMessage(this.ajaxErrorTemplate);
     }
 });
