@@ -50,3 +50,7 @@
 .cart-item .count {
     font-weight: bold;
 }
+
+.github-link {
+    line-height: 35px;
+}
